@@ -1,0 +1,9 @@
+---
+blank_issues_enabled: false
+contact_links:
+  - name: 📄 Website Build Plan
+    url: ../../Website_Build_Plan.md
+    about: Read the high-level plan before filing new issues.
+  - name: 📘 README
+    url: ../../README.md
+    about: Check the repo overview and setup instructions.
