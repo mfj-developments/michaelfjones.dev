@@ -5,9 +5,25 @@ import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "Michael Jones — Portfolio",
+  metadataBase: new URL("https://michaelfjones.dev"),
+  title: {
+    default: "Michael F. Jones — Developer",
+    template: "%s | Michael F. Jones",
+  },
   description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
-  metadataBase: new URL("https://michaelfjones.com"),
+  openGraph: {
+    title: "Michael F. Jones — Developer",
+    description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
+    url: "/",
+    siteName: "Michael F. Jones",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Michael F. Jones — Developer",
+    description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
+  },
 };
 
 export default function RootLayout({
