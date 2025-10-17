@@ -79,7 +79,8 @@ export default function ResumePreview() {
       >
         <div
           ref={contentRef}
-          className={`overflow-hidden rounded-xl border bg-background/70 ${open ? "opacity-100" : "opacity-0"} transition-opacity duration-500`}
+          className={`overflow-hidden rounded-xl border bg-background/70 transition-opacity duration-500 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+          aria-hidden={!open}
         >
           <object
             data="/resume.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0"
