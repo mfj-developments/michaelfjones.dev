@@ -37,7 +37,7 @@ export const projects: Project[] = [
       live: "https://michaelfjones.com",
       repo: "https://github.com/michaelfjones/michaeljones.dev",
     },
-    image: "/images/mj.jpg",
+    image: "/images/landing.jpg",
     featured: true,
   },
 ];

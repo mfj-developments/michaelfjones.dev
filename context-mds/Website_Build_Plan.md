@@ -1,4 +1,4 @@
-# Michael Jones — Portfolio Website Build Plan
+# Michael F. Jones — Portfolio Website Build Plan
 
 > A structured, codex‑friendly plan to scaffold, implement, and ship a polished Next.js portfolio site. Includes goals, tech stack, milestones, tasks with acceptance criteria, and checklists you can mark as complete.
 
@@ -7,21 +7,25 @@
 ## 0) Context & Objectives
 
 **Context**
+
 - New CS grad (May 2025), recent experience at Turbo Labs (React/Next/Supabase, agentic AI workflows).
 - Based in Northwest Arkansas; targeting frontend‑leaning full‑stack roles.
 - Need a credible online presence: portfolio site + live projects + consistent story.
 
 **Primary Objectives**
+
 - Ship a production‑quality personal site with **Home, About, Projects, Contact, Blog (optional)**.
 - Showcase **2–3 strong projects** with live demos and clean repos.
 - Present a clear professional brand; streamline applications with a downloadable **resume.pdf**.
 - Make the site fast, accessible, and maintainable; simple content workflows.
 
 **Secondary Objectives**
+
 - Demonstrate familiarity with **CI/CD, analytics, SEO, and a light DevOps workflow**.
 - Optionally use **Supabase** for simple content (project metadata/blog), or keep data static for speed.
 
 **Success Metrics**
+
 - Lighthouse: Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 95, SEO ≥ 95.
 - CLS ≤ 0.1, TTI < 2.5s on cable‑like network.
 - At least **2 live projects** linked, each with: README, screenshots, and a 3–5 sentence case study.
@@ -32,6 +36,7 @@
 ## 1) Tech Stack & Key Decisions
 
 **Core**
+
 - Framework: **Next.js 14+ (App Router)**
 - Language: **TypeScript**
 - Styling: **Tailwind CSS** (+ @tailwindcss/typography/forms/aspect-ratio as needed)
@@ -41,16 +46,19 @@
 - Version Control: **GitHub**
 
 **Optional/Pluggable**
+
 - Data Layer: **Supabase** (Auth, simple tables for projects/blog), or **static JSON/MDX**.
 - Forms: Supabase Functions / Resend / Formspree; fallback `mailto:` if API not ready.
 - Analytics: Vercel Analytics or Plausible (lightweight).
 
 **Tooling**
+
 - Linting/Formatting: ESLint, Prettier
 - Testing: Playwright (smoke + a11y), Vitest/RTL (unit), Lighthouse CI (optional)
 - CI/CD: GitHub Actions (typecheck, lint, build, tests → deploy via Vercel)
 
 **Design System**
+
 - Typography: Inter or Manrope
 - Color: Minimal (neutral base + 1 accent)
 - Spacing: Tailwind scale; `rounded-2xl`, `shadow-md`
@@ -58,6 +66,7 @@
 - Tokens: define in `tailwind.config.ts` + CSS variables
 
 **Architecture Choices**
+
 - **App Router** with segment‑based layouts
 - **MDX for blog** (optional); projects as `projects/*.json` or MDX frontmatter
 - **Images** via `next/image`
@@ -100,6 +109,7 @@
 ## 3) Environment & Commands
 
 **Scaffold**
+
 ```bash
 npx create-next-app@latest michaeljones.dev --ts --tailwind --eslint
 cd michaeljones.dev
@@ -110,6 +120,7 @@ npx shadcn-ui@latest add button card badge input textarea navigation-menu sheet 
 ```
 
 **Dev**
+
 ```bash
 npm run dev        # local dev
 npm run lint       # eslint
@@ -119,6 +130,7 @@ npm run start      # run prod
 ```
 
 **Optional (Supabase)**
+
 ```bash
 npm i @supabase/supabase-js
 # set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -129,6 +141,7 @@ npm i @supabase/supabase-js
 ## 4) Milestones & Checklists (Definitions of Done Included)
 
 ### M0 — Project Init & CI/CD
+
 - [ ] Initialize Next.js (App Router, TS, Tailwind)
 - [ ] Add ESLint/Prettier; strict TS settings
 - [ ] Install shadcn/ui + base components
@@ -140,6 +153,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M1 — Global Layout & Navigation
+
 - [ ] `app/layout.tsx` with fonts, metadata, and theme
 - [ ] Header nav: LOGO, Projects, About, Blog (optional), Contact, GitHub/LinkedIn icons
 - [ ] Footer: ©, location, email, social links
@@ -149,6 +163,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M2 — Home Page (Hero + Featured Projects)
+
 - [ ] Hero: name, tagline, short blurb, 2–3 CTAs (Projects, Resume, Email)
 - [ ] Featured projects section (3 cards)
 - [ ] Tech/tool strip (badges)
@@ -158,6 +173,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M3 — About Page
+
 - [ ] Profile/Quick facts section
 - [ ] Timeline/experience (Turbo Labs, UArk, leadership)
 - [ ] Principles/skills block
@@ -167,6 +183,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M4 — Projects Page
+
 - [ ] Filter chips (All, Frontend, Full‑stack, Next.js, Supabase)
 - [ ] Project Card template: thumb, stack badges, 2–3 sentence summary
 - [ ] Links: Live, GitHub, Case Study (or Readme)
@@ -176,6 +193,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M5 — Contact Page
+
 - [ ] Contact intro; availability note
 - [ ] Form: name, email, message (+ simple validation)
 - [ ] Integration: mailto fallback OR API (Supabase/Resend)
@@ -185,6 +203,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M6 — Resume Delivery
+
 - [ ] Place `public/resume.pdf` (ATS and print versions optional)
 - [ ] Add `/resume` route or direct download button
 **DoD:** Button downloads or opens resume reliably; file size < 1MB if possible.
@@ -192,6 +211,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M7 — Performance & Accessibility
+
 - [ ] Optimize images via `next/image`; preload hero font & avatar
 - [ ] Reduce JS: tree-shake, lazy‑load non‑critical sections
 - [ ] Add Playwright a11y checks for key pages
@@ -201,6 +221,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M8 — SEO & Analytics
+
 - [ ] Route metadata: titles, descriptions, canonical URLs
 - [ ] OpenGraph/Twitter images (`/public/og/*.png`)
 - [ ] Sitemap + robots.txt
@@ -210,6 +231,7 @@ npm i @supabase/supabase-js
 ---
 
 ### M9 — Content Freeze & Polish
+
 - [ ] Final copy edit (typos, voice)
 - [ ] Replace placeholders with real screenshots
 - [ ] Verify external links (LinkedIn/GitHub/Live demos)
@@ -221,6 +243,7 @@ npm i @supabase/supabase-js
 ## 5) Page Requirements (Acceptance Criteria)
 
 ### Home
+
 - Clear headline + location (Fayetteville, AR)
 - 2–3 primary CTAs
 - 3 featured projects (live links)
@@ -228,24 +251,28 @@ npm i @supabase/supabase-js
 - OG image present
 
 ### About
+
 - Short bio (recent grad, Turbo Labs, stack)
 - Quick facts (GPA, minors, focus, location)
 - Timeline of experience
 - CTA row
 
 ### Projects
+
 - Filterable cards
 - Each card: title, stack badges, ~45–70 word summary
 - Links: Live, GitHub, Case Study
 - Data-driven (JSON/MDX)
 
 ### Contact
+
 - Intro text + response expectation
 - Form or mailto fallback
 - Error/Success states
 - Alt channels: GitHub, LinkedIn, Email, Resume
 
 ### Blog (Optional)
+
 - Index: search + tags
 - Post: title, date, read time, tags, MDX content
 - Prev/Next navigation
@@ -282,11 +309,13 @@ npm i @supabase/supabase-js
 ## 8) Testing Plan
 
 **Manual**
+
 - Keyboard navigation coverage
 - Mobile viewport checks (iPhone SE → Desktop XL)
 - Broken link sweep (script or extension)
 
 **Automated (nice to have)**
+
 - Playwright: visit each page, run `axe-core` a11y
 - Vitest: util functions, component rendering
 
@@ -355,7 +384,8 @@ npm i @supabase/supabase-js
    - Add route metadata, sitemap, robots, OG images; wire analytics in prod only.
 
 10. **Polish & Ship**
-   - Clean copy, replace placeholders, validate links, add 404; final deploy.
+
+- Clean copy, replace placeholders, validate links, add 404; final deploy.
 
 ---
 

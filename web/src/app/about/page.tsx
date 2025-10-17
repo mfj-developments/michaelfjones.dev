@@ -5,7 +5,7 @@ import { MapPin, Code2, Sparkles, GraduationCap, ArrowRight } from "lucide-react
 import ResumePreview from "@/components/resume-preview";
 
 export const metadata = {
-  title: "About — Michael Jones",
+  title: "About — Michael F. Jones",
   description: "Frontend‑leaning full‑stack developer based in Fayetteville, AR.",
 };
 

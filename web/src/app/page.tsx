@@ -44,7 +44,7 @@ export default function Home() {
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
         >
           <Balancer>
-            Michael Jones — <span className="text-gradient-accent">Developer</span>
+            Michael F. Jones — <span className="text-gradient-accent">Developer</span>
           </Balancer>
         </motion.h1>
         <motion.p
