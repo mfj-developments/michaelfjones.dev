@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, Download, ExternalLink } from "lucide-react";
 
@@ -8,6 +8,27 @@ export default function ResumePreview() {
   const [open, setOpen] = useState(false);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement | null>(null);
+  const resumes = useMemo(
+    () => [
+      {
+        id: "draft",
+        label: "2025 Draft",
+        description: "Latest iteration with 2025 updates.",
+        path: "/Jones%20Resume%20Draft%2010_19_25.pdf",
+        downloadName: "Michael-F-Jones-Resume-2025-Draft.pdf",
+      },
+      {
+        id: "current",
+        label: "Published 2024",
+        description: "Previous public version hosted here.",
+        path: "/resume.pdf",
+        downloadName: "Michael-F-Jones-Resume.pdf",
+      },
+    ],
+    [],
+  );
+  const [activeResumeId, setActiveResumeId] = useState(resumes[0]?.id ?? "");
+  const activeResume = resumes.find((resume) => resume.id === activeResumeId) ?? resumes[0];
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash === "#resume") {
@@ -45,6 +66,20 @@ export default function ResumePreview() {
     }
   };
 
+  useEffect(() => {
+    if (!open || typeof window === "undefined") {
+      return undefined;
+    }
+
+    const timeout = window.setTimeout(() => {
+      if (contentRef.current) {
+        setMaxHeight(contentRef.current.scrollHeight + 48);
+      }
+    }, 50);
+
+    return () => window.clearTimeout(timeout);
+  }, [activeResume?.path, open]);
+
   return (
     <section
       id="resume"
@@ -73,6 +108,29 @@ export default function ResumePreview() {
         </Button>
       </div>
 
+      <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm font-medium text-foreground">Currently showing</p>
+          <p className="text-sm text-muted-foreground">{activeResume?.description}</p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {resumes.map((resume) => {
+            const isActive = resume.id === activeResumeId;
+            return (
+              <Button
+                key={resume.id}
+                variant={isActive ? "default" : "outline"}
+                size="sm"
+                onClick={() => setActiveResumeId(resume.id)}
+                aria-pressed={isActive}
+              >
+                {resume.label}
+              </Button>
+            );
+          })}
+        </div>
+      </div>
+
       <div
         className={`transition-[max-height] duration-500 ease-out ${open ? "mt-4" : "max-h-0"}`}
         style={{ maxHeight: open ? maxHeight : 0 }}
@@ -83,7 +141,8 @@ export default function ResumePreview() {
           aria-hidden={!open}
         >
           <object
-            data="/resume.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0"
+            key={activeResume?.path}
+            data={`${activeResume?.path ?? ""}#toolbar=0&navpanes=0&scrollbar=0`}
             type="application/pdf"
             className="w-full"
             style={{ minHeight: open ? "1065px" : "0px" }}
@@ -91,8 +150,8 @@ export default function ResumePreview() {
           >
             <div className="flex flex-col items-start gap-2 p-6 text-sm text-muted-foreground">
               <p>Inline preview isn&apos;t available in this browser.</p>
-              <a href="/resume.pdf" className="underline" target="_blank" rel="noreferrer">
-                Download resume.pdf
+              <a href={activeResume?.path ?? "/resume.pdf"} className="underline" target="_blank" rel="noreferrer">
+                Download {activeResume?.downloadName ?? "resume.pdf"}
               </a>
             </div>
           </object>
@@ -101,12 +160,12 @@ export default function ResumePreview() {
 
       <div className="mt-4 flex flex-wrap gap-3">
         <Button asChild>
-          <a href="/resume.pdf" download className="inline-flex items-center gap-2">
+          <a href={activeResume?.path ?? "/resume.pdf"} download={activeResume?.downloadName} className="inline-flex items-center gap-2">
             <Download className="h-4 w-4" /> Download PDF
           </a>
         </Button>
         <Button asChild variant="outline">
-          <a href="/resume.pdf" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
+          <a href={activeResume?.path ?? "/resume.pdf"} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2">
             <ExternalLink className="h-4 w-4" /> Open in new tab
           </a>
         </Button>
