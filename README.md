@@ -1,6 +1,6 @@
 # 🌐 Michael Jones — Portfolio & Project Showcase
 
-**Live Site:** _Coming soon on [michaelfjones.com](https://michaelfjones.com)_  
+**Live Site:** [michaelfjones.dev](https://michaelfjones.dev)  
 **Author:** Michael F. Jones  
 **Location:** Fayetteville, Arkansas  
 **Email:** [mfjdevelopments@gmail.com](mailto:mfjdevelopments@gmail.com)  
