@@ -49,6 +49,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isProduction = process.env.NODE_ENV === "production";
+
   return (
     <html lang="en" className="dark" suppressHydrationWarning data-mode="dark" data-theme="palette-1">
       <head>
@@ -83,8 +85,12 @@ export default function RootLayout({
           <Nav />
           <main className="flex-1 container mx-auto px-4 py-10 sm:py-12">{children}</main>
           <Footer />
-          <Analytics />
-          <SpeedInsights />
+          {isProduction && (
+            <>
+              <Analytics />
+              <SpeedInsights />
+            </>
+          )}
         </ThemeProvider>
       </body>
     </html>
