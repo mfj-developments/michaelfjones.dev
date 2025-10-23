@@ -28,6 +28,24 @@ export default function Home() {
           className="pointer-events-none absolute -left-28 -bottom-28 h-[360px] w-[360px] rounded-full opacity-10"
           style={{ background: "radial-gradient(circle at center, var(--glow-secondary) 0%, transparent 60%)" }}
         />
+        <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center" style={{ zIndex: -9 }}>
+          <div
+            className="h-[360px] w-[360px] sm:h-[420px] sm:w-[420px] md:h-[520px] md:w-[520px] opacity-25"
+            style={{
+              background: "linear-gradient(135deg, var(--text-gradient-start) 0%, var(--text-gradient-end) 100%)",
+              WebkitMaskImage: "url('/mfj-logo-med-transp.svg')",
+              maskImage: "url('/mfj-logo-med-transp.svg')",
+              WebkitMaskRepeat: "no-repeat",
+              maskRepeat: "no-repeat",
+              WebkitMaskPosition: "center",
+              maskPosition: "center",
+              WebkitMaskSize: "contain",
+              maskSize: "contain",
+              filter: "blur(6px)",
+              mixBlendMode: "screen",
+            }}
+          />
+        </div>
 
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <div className="flex flex-wrap items-center gap-2 justify-center md:justify-start">
