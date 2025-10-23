@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
   icons: {
-    icon: [{ url: "/mfj-logo-med-whitebg.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/mfj-logo-color.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     title: "Michael F. Jones — Developer",
@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning data-mode="dark" data-theme="palette-1">
       <head>
-        <link rel="icon" type="image/svg+xml" href="/mfj-logo-med-whitebg.svg" data-theme-favicon />
+        <link rel="icon" type="image/svg+xml" href="/mfj-logo-color.svg" data-theme-favicon />
         <script
           dangerouslySetInnerHTML={{
             __html: `(()=>{try{const root=document.documentElement;const storedMode=localStorage.getItem("mj-theme-mode");const storedPalette=localStorage.getItem("mj-theme-palette");const mode=storedMode==="light"?"light":"dark";root.dataset.mode=mode;root.classList.toggle("dark",mode==="dark");if(storedPalette){root.dataset.theme=storedPalette;}}catch(e){}})();`,
