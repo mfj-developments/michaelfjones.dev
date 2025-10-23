@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 export type ThemeMode = "light" | "dark";
 export type ThemeProfile =
@@ -51,31 +51,16 @@ function loadStoredPalette(): ThemeProfile {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setMode] = useState<ThemeMode>(() => loadStoredMode());
   const [palette, setPalette] = useState<ThemeProfile>(() => loadStoredPalette());
-  const logoMarkupRef = useRef<string | null>(null);
 
   const updateDynamicFavicon = useCallback(() => {
     if (typeof document === "undefined") return;
 
-    const baseMarkup = logoMarkupRef.current;
-    if (!baseMarkup) return;
-
     const linkEl = document.head.querySelector<HTMLLinkElement>("link[data-theme-favicon]");
     if (!linkEl) return;
 
-    const computed = getComputedStyle(document.documentElement);
-    const mid = computed.getPropertyValue("--text-gradient-mid").trim();
-    const start = computed.getPropertyValue("--text-gradient-start").trim();
-    const end = computed.getPropertyValue("--text-gradient-end").trim();
-    const primary = computed.getPropertyValue("--primary").trim();
-    const fallback = mode === "dark" ? "#ffffff" : "#000000";
-    const paletteColor = [mid, start, end, primary].find((value) => value.length > 0);
-    const color = paletteColor || fallback;
-
-    const svgWithColor = baseMarkup.replace("<svg", `<svg style="color:${color}"`);
-    const encoded = `data:image/svg+xml,${encodeURIComponent(svgWithColor)}`;
-
-    if (linkEl.href !== encoded) {
-      linkEl.href = encoded;
+    const iconPath = mode === "dark" ? "/mfj-logo-big-white-blackbg.svg" : "/mfj-logo-big-black-whitebg.svg";
+    if (linkEl.getAttribute("href") !== iconPath) {
+      linkEl.setAttribute("href", iconPath);
     }
   }, [mode]);
 
@@ -93,26 +78,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem(PALETTE_STORAGE_KEY, palette);
     updateDynamicFavicon();
   }, [palette, updateDynamicFavicon]);
-
-  useEffect(() => {
-    let cancelled = false;
-    if (logoMarkupRef.current) return;
-
-    fetch("/mfj-logo-big.svg")
-      .then((response) => (response.ok ? response.text() : Promise.reject()))
-      .then((text) => {
-        if (cancelled) return;
-        logoMarkupRef.current = text;
-        updateDynamicFavicon();
-      })
-      .catch(() => {
-        // Leave the static favicon in place if dynamic updates are unavailable.
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [updateDynamicFavicon]);
 
   const value = useMemo<ThemeContextValue>(
     () => ({
