@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import ThemeControls from "@/components/theme-controls";
+import LogoMark from "@/components/logo-mark";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -20,8 +21,9 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/60 supports-[backdrop-filter]:bg-background/45 backdrop-blur-md">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
-        <Link href="/" className="font-semibold tracking-tight">
-          Michael F. Jones
+        <Link href="/" className="group flex items-center gap-3 text-foreground">
+          <LogoMark className="h-8 w-8 shrink-0 transition-transform duration-200 group-hover:scale-105" />
+          <span className="font-semibold tracking-tight text-sm sm:text-base">Michael F. Jones</span>
         </Link>
 
         <nav className="hidden md:block">

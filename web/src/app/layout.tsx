@@ -11,6 +11,12 @@ export const metadata: Metadata = {
     template: "%s | Michael F. Jones",
   },
   description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
+  icons: {
+    icon: [
+      { url: "/mfj-logo-big.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
+  },
   openGraph: {
     title: "Michael F. Jones — Developer",
     description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
@@ -48,6 +54,7 @@ export default function RootLayout({
             __html: `(()=>{try{const root=document.documentElement;const storedMode=localStorage.getItem("mj-theme-mode");const storedPalette=localStorage.getItem("mj-theme-palette");const mode=storedMode==="light"?"light":"dark";root.dataset.mode=mode;root.classList.toggle("dark",mode==="dark");if(storedPalette){root.dataset.theme=storedPalette;}}catch(e){}})();`,
           }}
         />
+        <link rel="icon" type="image/svg+xml" href="/mfj-logo-big.svg" data-theme-favicon />
       </head>
       <body className={`antialiased min-h-dvh flex flex-col bg-background text-foreground relative`}>
         <ThemeProvider>
