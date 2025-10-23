@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTheme, ThemeProfile } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Palette } from "lucide-react";
@@ -15,12 +15,21 @@ const paletteOptions: { id: ThemeProfile; label: string; swatch: string[] }[] = 
 ];
 
 export default function ThemeControls({ withLabels = false }: { withLabels?: boolean }) {
+  const [mounted, setMounted] = useState(false);
   const { mode, toggleMode, palette, setPalette } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const currentPalette = useMemo(
     () => paletteOptions.find((option) => option.id === palette) ?? paletteOptions[0],
     [palette]
   );
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className="flex items-center gap-2">
@@ -39,6 +48,7 @@ export default function ThemeControls({ withLabels = false }: { withLabels?: boo
       </label>
       <div className="relative">
         <select
+          suppressHydrationWarning
           id="theme-palette-select"
           value={palette}
           onChange={(event) => setPalette(event.target.value as ThemeProfile)}

@@ -4,7 +4,6 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://michaelfjones.dev"),
@@ -81,12 +80,7 @@ export default function RootLayout({
           <Nav />
           <main className="flex-1 container mx-auto px-4 py-10 sm:py-12">{children}</main>
           <Footer />
-          {isProduction && (
-            <>
-              <Analytics />
-              <SpeedInsights />
-            </>
-          )}
+          {isProduction && <Analytics />}
         </ThemeProvider>
       </body>
     </html>
