@@ -12,8 +12,8 @@ export default function LogoMark({ className }: LogoMarkProps) {
       style={{
         background: "linear-gradient(135deg, var(--text-gradient-start), var(--text-gradient-end))",
         backgroundColor: "var(--text-gradient-mid)",
-        WebkitMaskImage: "url('/mfj-logo-big-black.svg')",
-        maskImage: "url('/mfj-logo-big-black.svg')",
+        WebkitMaskImage: "url('/mfj-logo-med-transp.svg')",
+        maskImage: "url('/mfj-logo-med-transp.svg')",
         WebkitMaskRepeat: "no-repeat",
         maskRepeat: "no-repeat",
         WebkitMaskPosition: "center",

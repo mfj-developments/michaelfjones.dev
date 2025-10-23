@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 export type ThemeMode = "light" | "dark";
 export type ThemeProfile =
@@ -52,32 +52,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mode, setMode] = useState<ThemeMode>(() => loadStoredMode());
   const [palette, setPalette] = useState<ThemeProfile>(() => loadStoredPalette());
 
-  const updateDynamicFavicon = useCallback(() => {
-    if (typeof document === "undefined") return;
-
-    const linkEl = document.head.querySelector<HTMLLinkElement>("link[data-theme-favicon]");
-    if (!linkEl) return;
-
-    const iconPath = mode === "dark" ? "/mfj-logo-big-white-blackbg.svg" : "/mfj-logo-big-black-whitebg.svg";
-    if (linkEl.getAttribute("href") !== iconPath) {
-      linkEl.setAttribute("href", iconPath);
-    }
-  }, [mode]);
-
   useEffect(() => {
     const root = document.documentElement;
     root.dataset.mode = mode;
     root.classList.toggle("dark", mode === "dark");
     window.localStorage.setItem(MODE_STORAGE_KEY, mode);
-    updateDynamicFavicon();
-  }, [mode, updateDynamicFavicon]);
+  }, [mode]);
 
   useEffect(() => {
     const root = document.documentElement;
     root.dataset.theme = palette;
     window.localStorage.setItem(PALETTE_STORAGE_KEY, palette);
-    updateDynamicFavicon();
-  }, [palette, updateDynamicFavicon]);
+  }, [palette]);
 
   const value = useMemo<ThemeContextValue>(
     () => ({
