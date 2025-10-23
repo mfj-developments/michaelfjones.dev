@@ -1,11 +1,10 @@
-import { projects } from "@/data/projects";
-import ProjectsClient from "./projects-client";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Projects — Michael F. Jones",
-  description: "A selection of projects built with modern web tools.",
+  description: "Selected work by Michael F. Jones.",
 };
 
 export default function ProjectsPage() {
-  return <ProjectsClient projects={projects} />;
+  redirect("/#projects");
 }
