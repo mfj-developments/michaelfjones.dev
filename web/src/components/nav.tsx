@@ -13,9 +13,9 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { href: "/#about", label: "About" },
-    { href: "/#projects", label: "Projects" },
-    { href: "/#contact", label: "Contact" },
+    { href: "/projects", label: "Projects" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
