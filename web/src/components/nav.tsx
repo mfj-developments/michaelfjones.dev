@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import ThemeControls from "@/components/theme-controls";
 import LogoMark from "@/components/logo-mark";
+import { Tooltip } from "@/components/tooltip";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -41,15 +42,21 @@ export default function Nav() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3 text-foreground/80">
-          <Link aria-label="GitHub" href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer">
-            <Github className="h-5 w-5 hover:text-foreground transition-colors" />
-          </Link>
-          <Link aria-label="LinkedIn" href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer">
-            <Linkedin className="h-5 w-5 hover:text-foreground transition-colors" />
-          </Link>
-          <Link aria-label="Email" href="mailto:mfjdevelopments@gmail.com">
-            <Mail className="h-5 w-5 hover:text-foreground transition-colors" />
-          </Link>
+          <Tooltip label="GitHub">
+            <Link aria-label="GitHub" href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
+              <Github className="h-5 w-5" />
+            </Link>
+          </Tooltip>
+          <Tooltip label="LinkedIn">
+            <Link aria-label="LinkedIn" href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
+              <Linkedin className="h-5 w-5" />
+            </Link>
+          </Tooltip>
+          <Tooltip label="Email">
+            <Link aria-label="Email" href="mailto:mfjdevelopments@gmail.com" className="hover:text-foreground transition-colors">
+              <Mail className="h-5 w-5" />
+            </Link>
+          </Tooltip>
           <ThemeControls />
         </div>
 

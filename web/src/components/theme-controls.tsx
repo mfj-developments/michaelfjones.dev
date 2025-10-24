@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTheme, ThemeProfile } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Palette } from "lucide-react";
+import { Tooltip } from "@/components/tooltip";
 
 const paletteOptions: { id: ThemeProfile; label: string; swatch: string[] }[] = [
   { id: "palette-default", label: "Default Blend", swatch: ["#8A83DA", "#FBD5BD", "#2B124C"] },
@@ -33,35 +34,39 @@ export default function ThemeControls({ withLabels = false }: { withLabels?: boo
 
   return (
     <div className="flex items-center gap-2">
-      <Button
-        variant="outline"
-        size="icon"
-        onClick={toggleMode}
-        aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
-        className="h-9 w-9"
-      >
-        {mode === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-      </Button>
+      <Tooltip label={mode === "dark" ? "Light Mode" : "Dark Mode"}>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={toggleMode}
+          aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
+          className="h-9 w-9"
+        >
+          {mode === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </Button>
+      </Tooltip>
 
       <label className="sr-only" htmlFor="theme-palette-select">
         Select theme palette
       </label>
-      <div className="relative">
-        <select
-          suppressHydrationWarning
-          id="theme-palette-select"
-          value={palette}
-          onChange={(event) => setPalette(event.target.value as ThemeProfile)}
-          className="appearance-none rounded-md border bg-background px-3 py-2 pr-8 text-sm shadow-sm ring-1 ring-inset ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
-        >
-          {paletteOptions.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <Palette className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-      </div>
+      <Tooltip label="Theme Selector">
+        <div className="relative">
+          <select
+            suppressHydrationWarning
+            id="theme-palette-select"
+            value={palette}
+            onChange={(event) => setPalette(event.target.value as ThemeProfile)}
+            className="appearance-none rounded-md border bg-background px-3 py-2 pr-8 text-sm shadow-sm ring-1 ring-inset ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+          >
+            {paletteOptions.map((option) => (
+              <option key={option.id} value={option.id}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <Palette className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        </div>
+      </Tooltip>
       <div className="flex items-center gap-1 rounded-md border border-border bg-background/80 px-2 py-1 shadow-sm">
         {currentPalette.swatch.map((color, idx) => (
           <span
