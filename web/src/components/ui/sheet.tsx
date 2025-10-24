@@ -71,6 +71,10 @@ function SheetContent({
         )}
         {...props}
       >
+        <SheetPrimitive.Title className="sr-only">Navigation Menu</SheetPrimitive.Title>
+        <SheetPrimitive.Description className="sr-only">
+          Site sections and quick actions
+        </SheetPrimitive.Description>
         {children}
         <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full border border-border/60 bg-background/70 text-foreground/80 shadow-sm transition-all hover:scale-105 hover:border-border hover:text-foreground focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
           <XIcon className="size-5" />

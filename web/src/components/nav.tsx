@@ -65,7 +65,7 @@ export default function Nav() {
             <SheetTrigger asChild>
               <Button variant="outline" size="sm" aria-label="Open menu">Menu</Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs p-6">
+            <SheetContent side="right" className="w-full max-w-xs p-6 pt-16">
               <div className="flex h-full flex-col gap-8">
                 <nav className="flex flex-col gap-4">
                   {links.map((l) => (
