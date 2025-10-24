@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -65,26 +65,38 @@ export default function Nav() {
             <SheetTrigger asChild>
               <Button variant="outline" size="sm" aria-label="Open menu">Menu</Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64">
-              <div className="flex flex-col gap-4 mt-6">
-                {links.map((l) => (
-                  <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-sm">
-                    {l.label}
-                  </Link>
-                ))}
-                <div className="flex gap-3 pt-2">
-                  <Link aria-label="GitHub" href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer">
-                    <Github className="h-5 w-5" />
-                  </Link>
-                  <Link aria-label="LinkedIn" href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer">
-                    <Linkedin className="h-5 w-5" />
-                  </Link>
-                  <Link aria-label="Email" href="mailto:mfjdevelopments@gmail.com">
-                    <Mail className="h-5 w-5" />
-                  </Link>
-                </div>
-                <div className="pt-2">
-                  <ThemeControls withLabels />
+            <SheetContent side="right" className="w-full max-w-xs p-6">
+              <div className="flex h-full flex-col gap-8">
+                <nav className="flex flex-col gap-4">
+                  {links.map((l) => (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center justify-between rounded-xl border px-4 py-3 text-lg font-medium text-foreground/90 transition-colors hover:bg-accent/20"
+                    >
+                      {l.label}
+                      <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                    </Link>
+                  ))}
+                </nav>
+
+                <div className="flex flex-col gap-6">
+                  <div className="flex justify-between gap-3">
+                    <Link aria-label="GitHub" href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer" className="flex h-12 flex-1 items-center justify-center rounded-xl border text-foreground/80 transition-colors hover:text-foreground">
+                      <Github className="h-5 w-5" />
+                    </Link>
+                    <Link aria-label="LinkedIn" href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer" className="flex h-12 flex-1 items-center justify-center rounded-xl border text-foreground/80 transition-colors hover:text-foreground">
+                      <Linkedin className="h-5 w-5" />
+                    </Link>
+                    <Link aria-label="Email" href="mailto:mfjdevelopments@gmail.com" className="flex h-12 flex-1 items-center justify-center rounded-xl border text-foreground/80 transition-colors hover:text-foreground">
+                      <Mail className="h-5 w-5" />
+                    </Link>
+                  </div>
+
+                  <div className="rounded-2xl border px-4 py-5">
+                    <ThemeControls withLabels orientation="vertical" />
+                  </div>
                 </div>
               </div>
             </SheetContent>

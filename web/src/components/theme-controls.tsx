@@ -67,17 +67,6 @@ export default function ThemeControls({ withLabels = false }: { withLabels?: boo
           <Palette className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         </div>
       </Tooltip>
-      <div className="flex items-center gap-1 rounded-md border border-border bg-background/80 px-2 py-1 shadow-sm">
-        {currentPalette.swatch.map((color, idx) => (
-          <span
-            key={`${currentPalette.id}-${idx}`}
-            aria-hidden
-            className="h-3.5 w-3.5 rounded-sm border border-border"
-            style={{ background: color }}
-          />
-        ))}
-      </div>
-
       {withLabels && (
         <span className="text-xs text-muted-foreground hidden lg:inline-block" aria-hidden>
           {currentPalette.label}
