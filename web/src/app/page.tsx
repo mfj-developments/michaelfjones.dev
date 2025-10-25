@@ -161,6 +161,10 @@ export default function Home() {
         </motion.div>
       </section>
 
+      <section id="projects" className="space-y-6 scroll-mt-28">
+        <ProjectsClient projects={projects} />
+      </section>
+
       <section id="about" className="space-y-8 scroll-mt-28">
         <div
           className="relative overflow-hidden rounded-2xl border p-6 ring-1 ring-inset ring-[var(--border)]"
@@ -221,10 +225,6 @@ export default function Home() {
         </div>
 
         <ResumePreview />
-      </section>
-
-      <section id="projects" className="space-y-6 scroll-mt-28">
-        <ProjectsClient projects={projects} />
       </section>
 
       <section id="contact" className="grid gap-6 lg:grid-cols-5 scroll-mt-28">
