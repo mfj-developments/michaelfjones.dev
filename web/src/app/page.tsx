@@ -227,31 +227,30 @@ export default function Home() {
         <ProjectsClient projects={projects} />
       </section>
 
-      <section id="contact" className="grid gap-6 md:grid-cols-5 scroll-mt-28">
+      <section id="contact" className="grid gap-6 lg:grid-cols-5 scroll-mt-28">
         <div
-          className="md:col-span-2 rounded-2xl border p-6 ring-1 ring-inset ring-[var(--border)]"
+          className="lg:col-span-2 rounded-2xl border p-6 ring-1 ring-inset ring-[var(--border)]"
           style={{ background: "linear-gradient(135deg, var(--panel-gradient-start) 0%, var(--panel-gradient-end) 100%)" }}
         >
           <h2 className="text-2xl font-semibold tracking-tight">Let’s connect</h2>
           <p className="mt-2 text-sm text-muted-foreground">I respond within 1–2 business days. Prefer email? Use the direct link below.</p>
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            <Link href="mailto:mfjdevelopments@gmail.com" className="flex items-center gap-2 rounded-lg border bg-background/40 px-3 py-2 ring-1 ring-inset ring-[var(--border)] hover:bg-accent transition-colors">
+          <div className="mt-4 flex flex-col gap-2">
+            <Link href="mailto:mfjdevelopments@gmail.com" className="flex w-full items-center justify-center gap-2 rounded-xl border bg-background/40 px-4 py-2 text-sm ring-1 ring-inset ring-[var(--border)] transition-colors hover:bg-accent">
               <Mail className="h-4 w-4 text-primary" />
-              <span className="text-sm">Email</span>
+              <span>Email</span>
             </Link>
-            <Link href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-lg border bg-background/40 px-3 py-2 ring-1 ring-inset ring-[var(--border)] hover:bg-accent transition-colors">
+            <Link href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer" className="flex w/full items-center justify-center gap-2 rounded-xl border bg-background/40 px-4 py-2 text-sm ring-1 ring-inset ring-[var(--border)] transition-colors hover:bg-accent">
               <Github className="h-4 w-4 text-primary" />
-              <span className="text-sm">GitHub</span>
+              <span>GitHub</span>
             </Link>
-            <Link href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-lg border bg-background/40 px-3 py-2 ring-1 ring-inset ring-[var(--border)] hover:bg-accent transition-colors">
+            <Link href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer" className="flex w/full items-center justify-center gap-2 rounded-xl border bg-background/40 px-4 py-2 text-sm ring-1 ring-inset ring-[var(--border)] transition-colors hover:bg-accent">
               <Linkedin className="h-4 w-4 text-primary" />
-              <span className="text-sm">LinkedIn</span>
+              <span>LinkedIn</span>
             </Link>
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">Direct email: <a className="underline" href="mailto:mfjdevelopments@gmail.com">mfjdevelopments@gmail.com</a></p>
         </div>
 
-        <div className="md:col-span-3 rounded-2xl border bg-background/40 p-6 ring-1 ring-inset ring-[var(--border)]">
+        <div className="lg:col-span-3 rounded-2xl border bg-background/40 p-6 ring-1 ring-inset ring-[var(--border)]">
           <h3 className="font-semibold mb-4">Send a message</h3>
           <form onSubmit={onSubmit} className="grid gap-4">
             <label className="sr-only" htmlFor="company">Company</label>
