@@ -40,7 +40,7 @@ export default function ThemeControls({ withLabels = false }: { withLabels?: boo
           size="icon"
           onClick={toggleMode}
           aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
-          className="h-9 w-9"
+          className="h-10 w-10 shrink-0"
         >
           {mode === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         </Button>
@@ -50,13 +50,13 @@ export default function ThemeControls({ withLabels = false }: { withLabels?: boo
         Select theme palette
       </label>
       <Tooltip label="Theme Selector">
-        <div className="relative">
+        <div className="relative flex-1 min-w-0">
           <select
             suppressHydrationWarning
             id="theme-palette-select"
             value={palette}
             onChange={(event) => setPalette(event.target.value as ThemeProfile)}
-            className="appearance-none rounded-md border bg-background px-3 py-2 pr-8 text-sm shadow-sm ring-1 ring-inset ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+            className="appearance-none w-full rounded-md border bg-background px-3 py-2 pr-9 text-sm shadow-sm ring-1 ring-inset ring-[var(--border)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
           >
             {paletteOptions.map((option) => (
               <option key={option.id} value={option.id}>
@@ -64,7 +64,7 @@ export default function ThemeControls({ withLabels = false }: { withLabels?: boo
               </option>
             ))}
           </select>
-          <Palette className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Palette className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         </div>
       </Tooltip>
       {withLabels && (

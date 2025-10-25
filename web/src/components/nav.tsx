@@ -95,7 +95,7 @@ export default function Nav() {
                   </div>
 
                   <div className="rounded-2xl border px-4 py-5">
-                    <ThemeControls withLabels orientation="vertical" />
+                    <ThemeControls withLabels />
                   </div>
                 </div>
               </div>
