@@ -125,7 +125,7 @@ export default function Home() {
             <Link href="/#contact">Contact Me</Link>
           </Button>
           <Button variant="ghost" asChild>
-            <Link href="/resume" className="inline-flex items-center gap-2">
+            <Link href="/#resume" className="inline-flex items-center gap-2">
               Resume <ExternalLink className="h-4 w-4" />
             </Link>
           </Button>
