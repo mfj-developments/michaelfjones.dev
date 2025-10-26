@@ -86,7 +86,7 @@ export default function ResumePreview() {
   return (
     <section
       id="resume"
-      className="relative overflow-hidden rounded-2xl border ring-1 ring-inset ring-[var(--border)] p-6"
+      className="relative overflow-hidden rounded-2xl border ring-1 ring-inset ring-[var(--border)] p-6 scroll-mt-36 sm:scroll-mt-40"
       style={{ background: "linear-gradient(135deg, var(--panel-gradient-start) 0%, var(--panel-gradient-end) 100%)" }}
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
