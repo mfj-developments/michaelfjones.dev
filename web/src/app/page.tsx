@@ -204,26 +204,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="rounded-2xl border bg-muted/40 p-5 ring-1 ring-inset ring-[var(--border)]">
-            <h3 className="font-semibold">Core Stack</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {["React", "Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Supabase"].map((s) => (
-                <Badge key={s} variant="secondary">{s}</Badge>
-              ))}
-            </div>
-          </div>
-          <div className="rounded-2xl border bg-muted/40 p-5 ring-1 ring-inset ring-[var(--border)]">
-            <h3 className="font-semibold">Principles</h3>
-            <ul className="mt-3 grid gap-2 text-sm text-muted-foreground">
-              <li>• Accessibility and performance by default</li>
-              <li>• Small, composable components</li>
-              <li>• Clear structure, meaningful motion</li>
-              <li>• Data-driven pages with simple content flows</li>
-            </ul>
-          </div>
-        </div>
-
         <ResumePreview />
       </section>
 
