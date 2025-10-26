@@ -44,7 +44,8 @@ export default function ResumePreview() {
 
     const measure = () => {
       if (contentRef.current) {
-        setMaxHeight(contentRef.current.scrollHeight + 48);
+        const rect = contentRef.current.getBoundingClientRect();
+        setMaxHeight(rect.height + 48);
       }
     };
 
@@ -62,7 +63,8 @@ export default function ResumePreview() {
 
   const handleObjectLoad = () => {
     if (contentRef.current) {
-      setMaxHeight(contentRef.current.scrollHeight + 48);
+      const rect = contentRef.current.getBoundingClientRect();
+      setMaxHeight(rect.height + 48);
     }
   };
 
@@ -73,7 +75,8 @@ export default function ResumePreview() {
 
     const timeout = window.setTimeout(() => {
       if (contentRef.current) {
-        setMaxHeight(contentRef.current.scrollHeight + 48);
+        const rect = contentRef.current.getBoundingClientRect();
+        setMaxHeight(rect.height + 48);
       }
     }, 50);
 
@@ -140,21 +143,22 @@ export default function ResumePreview() {
           className={`overflow-hidden rounded-xl border bg-background/70 transition-opacity duration-500 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
           aria-hidden={!open}
         >
-          <object
-            key={activeResume?.path}
-            data={`${activeResume?.path ?? ""}#toolbar=0&navpanes=0&scrollbar=0`}
-            type="application/pdf"
-            className="w-full"
-            style={{ minHeight: open ? "1065px" : "0px" }}
-            onLoad={handleObjectLoad}
-          >
-            <div className="flex flex-col items-start gap-2 p-6 text-sm text-muted-foreground">
-              <p>Inline preview isn&apos;t available in this browser.</p>
-              <a href={activeResume?.path ?? "/resume.pdf"} className="underline" target="_blank" rel="noreferrer">
-                Download {activeResume?.downloadName ?? "resume.pdf"}
-              </a>
-            </div>
-          </object>
+          <div className="w-full" style={{ aspectRatio: "8.5 / 11", maxHeight: "80vh", overflow: "hidden" }}>
+            <object
+              key={activeResume?.path}
+              data={`${activeResume?.path ?? ""}#toolbar=0&navpanes=0&scrollbar=0`}
+              type="application/pdf"
+              className="h-full w-full"
+              onLoad={handleObjectLoad}
+            >
+              <div className="flex flex-col items-start gap-2 p-6 text-sm text-muted-foreground">
+                <p>Inline preview isn&apos;t available in this browser.</p>
+                <a href={activeResume?.path ?? "/resume.pdf"} className="underline" target="_blank" rel="noreferrer">
+                  Download {activeResume?.downloadName ?? "resume.pdf"}
+                </a>
+              </div>
+            </object>
+          </div>
         </div>
       </div>
 
