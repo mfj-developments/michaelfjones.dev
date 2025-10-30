@@ -10,14 +10,20 @@ import ThemeControls from "@/components/theme-controls";
 import LogoMark from "@/components/logo-mark";
 import { Tooltip } from "@/components/tooltip";
 
-export default function Nav() {
+type NavProps = {
+  hasProjects?: boolean;
+};
+
+export default function Nav({ hasProjects = true }: NavProps) {
   const [open, setOpen] = useState(false);
 
-  const links = [
-    { href: "/#about", label: "About" },
-    { href: "/#projects", label: "Projects" },
-    { href: "/#contact", label: "Contact" },
-  ];
+  const linkDefinitions = [
+    { href: "/#about", label: "About", requiresProjects: false },
+    { href: "/#projects", label: "Projects", requiresProjects: true },
+    { href: "/#contact", label: "Contact", requiresProjects: false },
+  ] as const;
+
+  const activeLinks = linkDefinitions.filter((link) => (link.requiresProjects ? hasProjects : true));
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/60 supports-[backdrop-filter]:bg-background/45 backdrop-blur-md">
@@ -30,7 +36,7 @@ export default function Nav() {
         <nav className="hidden md:block">
           <NavigationMenu>
             <NavigationMenuList>
-              {links.map((l) => (
+              {activeLinks.map((l) => (
                 <NavigationMenuItem key={l.href}>
                   <Link href={l.href} className="px-3 py-2 text-sm text-foreground/80 hover:text-foreground transition-colors">
                     {l.label}
@@ -43,7 +49,7 @@ export default function Nav() {
 
         <div className="hidden md:flex items-center gap-3 text-foreground/80">
           <Tooltip label="GitHub">
-            <Link aria-label="GitHub" href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
+            <Link aria-label="GitHub" href="https://github.com/mfj-developments" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
               <Github className="h-5 w-5" />
             </Link>
           </Tooltip>
@@ -72,7 +78,7 @@ export default function Nav() {
             >
               <div className="flex h-full flex-col gap-8">
                 <nav className="flex flex-col gap-4">
-                  {links.map((l) => (
+                  {activeLinks.map((l) => (
                     <Link
                       key={l.href}
                       href={l.href}
@@ -87,7 +93,7 @@ export default function Nav() {
 
                 <div className="flex flex-col gap-6">
                   <div className="flex justify-between gap-3">
-                    <Link aria-label="GitHub" href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer" className="flex h-12 flex-1 items-center justify-center rounded-xl border text-foreground/80 transition-colors hover:text-foreground">
+                    <Link aria-label="GitHub" href="https://github.com/mfj-developments" target="_blank" rel="noreferrer" className="flex h-12 flex-1 items-center justify-center rounded-xl border text-foreground/80 transition-colors hover:text-foreground">
                       <Github className="h-5 w-5" />
                     </Link>
                     <Link aria-label="LinkedIn" href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer" className="flex h-12 flex-1 items-center justify-center rounded-xl border text-foreground/80 transition-colors hover:text-foreground">

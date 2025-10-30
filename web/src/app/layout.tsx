@@ -4,6 +4,7 @@ import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
+import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://michaelfjones.dev"),
@@ -77,7 +78,7 @@ export default function RootLayout({
             className="pointer-events-none fixed inset-0 -z-10 opacity-[0.06] mix-blend-overlay bg-[url('/noise.svg')]"
           />
 
-          <Nav />
+          <Nav hasProjects={projects.length > 0} />
           <main className="flex-1 container mx-auto px-4 py-10 sm:py-12">{children}</main>
           <Footer />
           {isProduction && <Analytics />}

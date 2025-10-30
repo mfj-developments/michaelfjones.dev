@@ -4,7 +4,7 @@ This repository uses a **GitHub Projects** board to track milestones and tasks.
 
 ## 1) Create the Project
 
-1. Go to **GitHub → Your profile → Projects → New Project**.
+1. Go to **GitHub → Your profile (`github.com/mfj-developments`) → Projects → New Project**.
 2. Name it: `Michael F. Jones — Portfolio`.
 3. Choose **Board** or **Table** view (Table recommended).
 

@@ -31,7 +31,7 @@ Deployment note: on Vercel, set Project “Root Directory” to `web` so builds 
   - `web/src/app/layout.tsx:10`
 - Email address for contact: `mfjdevelopments@gmail.com`
   - Replaced all occurrences of `jonesmf58@gmail.com`.
-- GitHub profile links point to: `https://github.com/mj850-turbo`
+- GitHub profile links point to: `https://github.com/mfj-developments`
   - Navbar, footer, contact social buttons
 - LinkedIn link: `https://www.linkedin.com/in/michael-jones-58a03124b/`
   - Navbar, footer, contact social buttons

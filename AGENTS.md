@@ -14,6 +14,7 @@
 
 ## Development Workflow
 - Move work through the GitHub Project board (Backlog -> In Progress -> In Review -> Done) and keep tasks scoped to 1-2 focused days.
+- All public references (nav icons, documentation) should use the primary account: `https://github.com/mfj-developments`.
 - Branch per change (`feat/projects-drawer`, `fix/contact-errors`), push early for Vercel previews, and log noteworthy decisions in the relevant `context-mds/agent-*-context-*.md` file or `updates-plan.md`.
 
 ## Testing Guidelines

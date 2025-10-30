@@ -11,6 +11,7 @@
 - New CS grad (May 2025), recent experience at Turbo Labs (React/Next/Supabase, agentic AI workflows).
 - Based in Northwest Arkansas; targeting frontend‑leaning full‑stack roles.
 - Need a credible online presence: portfolio site + live projects + consistent story.
+- GitHub footprint now consolidated under [github.com/mfj-developments](https://github.com/mfj-developments).
 
 **Primary Objectives**
 

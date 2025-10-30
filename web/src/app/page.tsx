@@ -20,6 +20,7 @@ export default function Home() {
   const [hp, setHp] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const hasProjects = projects.length > 0;
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -161,9 +162,11 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section id="projects" className="space-y-6 scroll-mt-28">
-        <ProjectsClient projects={projects} />
-      </section>
+      {hasProjects && (
+        <section id="projects" className="space-y-6 scroll-mt-28">
+          <ProjectsClient projects={projects} />
+        </section>
+      )}
 
       <section id="about" className="space-y-8 scroll-mt-28">
         <div
@@ -219,11 +222,11 @@ export default function Home() {
               <Mail className="h-4 w-4 text-primary" />
               <span>Email</span>
             </Link>
-            <Link href="https://github.com/mj850-turbo" target="_blank" rel="noreferrer" className="flex w/full items-center justify-center gap-2 rounded-xl border bg-background/40 px-4 py-2 text-sm ring-1 ring-inset ring-[var(--border)] transition-colors hover:bg-accent">
+            <Link href="https://github.com/mfj-developments" target="_blank" rel="noreferrer" className="flex w-full items-center justify-center gap-2 rounded-xl border bg-background/40 px-4 py-2 text-sm ring-1 ring-inset ring-[var(--border)] transition-colors hover:bg-accent">
               <Github className="h-4 w-4 text-primary" />
               <span>GitHub</span>
             </Link>
-            <Link href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer" className="flex w/full items-center justify-center gap-2 rounded-xl border bg-background/40 px-4 py-2 text-sm ring-1 ring-inset ring-[var(--border)] transition-colors hover:bg-accent">
+            <Link href="https://www.linkedin.com/in/michael-jones-58a03124b/" target="_blank" rel="noreferrer" className="flex w-full items-center justify-center gap-2 rounded-xl border bg-background/40 px-4 py-2 text-sm ring-1 ring-inset ring-[var(--border)] transition-colors hover:bg-accent">
               <Linkedin className="h-4 w-4 text-primary" />
               <span>LinkedIn</span>
             </Link>
@@ -268,9 +271,11 @@ export default function Home() {
               <Button asChild>
                 <Link href="/#contact">Get in touch</Link>
               </Button>
-              <Button asChild variant="outline">
-                <Link href="/#projects">See projects</Link>
-              </Button>
+              {hasProjects && (
+                <Button asChild variant="outline">
+                  <Link href="/#projects">See projects</Link>
+                </Button>
+              )}
             </div>
           </div>
           <div

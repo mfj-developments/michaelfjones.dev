@@ -5,7 +5,7 @@
 **Location:** Fayetteville, Arkansas  
 **Email:** [mfjdevelopments@gmail.com](mailto:mfjdevelopments@gmail.com)  
 **LinkedIn:** [linkedin.com/in/michael-jones-58a03124b](https://www.linkedin.com/in/michael-jones-58a03124b/)  
-**GitHub:** [github.com/mj850-turbo](https://github.com/mj850-turbo)
+**GitHub:** [github.com/mfj-developments](https://github.com/mfj-developments)
 
 ---
 
@@ -105,7 +105,7 @@ The site is designed to serve as both a **personal brand** and a **proof of comp
 
 ### Installation
 ```bash
-git clone https://github.com/michaelfjones/michaeljones.dev.git
+git clone https://github.com/mfj-developments/michaeljones.dev.git
 cd michaeljones.dev
 npm install
 ```

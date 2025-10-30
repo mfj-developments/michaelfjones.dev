@@ -7,6 +7,18 @@ import { cn } from "@/lib/utils";
 
 export default function ProjectsClient({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<string>("All");
+
+  if (projects.length === 0) {
+    return (
+      <section className="rounded-2xl border bg-muted/40 p-6 text-center ring-1 ring-inset ring-[var(--border)]">
+        <h1 className="text-2xl font-semibold tracking-tight">Projects</h1>
+        <p className="mt-2 text-muted-foreground">
+          Case studies are being refreshed. Check back soon for new work and detailed breakdowns.
+        </p>
+      </section>
+    );
+  }
+
   const categories = useMemo(() => {
     const set = new Set<string>();
     projects.forEach((p) => p.stack.forEach((s) => set.add(s)));
