@@ -84,9 +84,9 @@ export default function Home() {
 
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <div className="flex flex-wrap items-center gap-2 justify-center md:justify-start">
-            <Badge variant="secondary" className="bg-accent/40 text-foreground">Frontend‑focused</Badge>
-            <Badge variant="secondary" className="bg-accent/40 text-foreground">Full‑stack</Badge>
-            <Badge variant="secondary" className="bg-accent/40 text-foreground">Next.js · TypeScript · Supabase</Badge>
+            <Badge variant="secondary" className="bg-accent/40 text-foreground">Front-end web developer</Badge>
+            <Badge variant="secondary" className="bg-accent/40 text-foreground">Logistics · Finance · Payments</Badge>
+            <Badge variant="secondary" className="bg-accent/40 text-foreground">React · Next.js · Supabase</Badge>
           </div>
         </motion.div>
 
@@ -97,7 +97,7 @@ export default function Home() {
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
         >
           <Balancer>
-            Michael F. Jones — <span className="text-gradient-accent">Developer</span>
+            Michael F. Jones — <span className="text-gradient-accent">Front-End Developer</span>
           </Balancer>
         </motion.h1>
         <motion.p
@@ -107,7 +107,7 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
         >
           <Balancer>
-            I craft clean, accessible interfaces and production‑grade web apps. Strong foundation in React/Next, with an eye for detail and performance.
+            Experience building data-heavy, production-grade web apps for logistics, finance, and payment clients. At Turbo Labs I developed six React/Next.js products powered by Supabase, REST APIs, and agent-assisted workflows.
           </Balancer>
         </motion.p>
         <motion.div
@@ -116,12 +116,6 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
         >
-          <Button asChild className="shadow-[0_8px_24px_-8px_var(--shadow-primary)]">
-            <Link href="/#projects" className="group">
-              View Projects
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </Button>
           <Button variant="outline" asChild>
             <Link href="/#contact">Contact Me</Link>
           </Button>
@@ -141,15 +135,15 @@ export default function Home() {
           <div className="rounded-xl border px-4 py-3 flex items-center gap-3 ring-1 ring-inset ring-[var(--border)]" style={{ background: "var(--badge-surface)" }}>
             <Code2 className="h-5 w-5 text-primary" />
             <div className="text-left">
-              <p className="text-sm font-medium">Production Projects</p>
-              <p className="text-xs text-muted-foreground">3+ featured builds</p>
+              <p className="text-sm font-medium">Production launches</p>
+              <p className="text-xs text-muted-foreground">6 web apps delivered/prototyped at Turbo Labs</p>
             </div>
           </div>
           <div className="rounded-xl border px-4 py-3 flex items-center gap-3 ring-1 ring-inset ring-[var(--border)]" style={{ background: "var(--badge-surface)" }}>
             <Activity className="h-5 w-5 text-primary" />
             <div className="text-left">
-              <p className="text-sm font-medium">Performance Targets</p>
-              <p className="text-xs text-muted-foreground">Lighthouse ≥ 90 / 95 / 95 / 95</p>
+              <p className="text-sm font-medium">Data-rich workflows</p>
+              <p className="text-xs text-muted-foreground">Grids with 25k+ rows & dashboards over 100k records</p>
             </div>
           </div>
           <div className="rounded-xl border px-4 py-3 flex items-center gap-3 ring-1 ring-inset ring-[var(--border)]" style={{ background: "var(--badge-surface)" }}>
@@ -180,7 +174,7 @@ export default function Home() {
           />
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">About</h2>
           <p className="mt-3 text-muted-foreground max-w-2xl">
-            I’m a frontend‑leaning full‑stack developer focused on building fast, accessible products with Next.js, TypeScript, Tailwind, and Supabase. I care about clean systems, thoughtful motion, and great developer experience.
+            I’m a front-end web developer who specializes in React and Next.js. My recent work at Turbo Labs covered supplier reconciliation dashboards, payments analytics, and automation suites backed by Supabase, REST APIs, and strongly typed UI patterns.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Badge variant="secondary"><MapPin className="mr-1 h-3.5 w-3.5" /> Fayetteville, AR</Badge>
@@ -192,18 +186,18 @@ export default function Home() {
         <div className="grid gap-4 md:grid-cols-3">
           <div className="rounded-2xl border bg-background/40 p-5 ring-1 ring-inset ring-[var(--border)]">
             <div className="text-sm text-muted-foreground">Focus</div>
-            <div className="mt-1 font-medium">Frontend‑first Full‑stack</div>
-            <p className="mt-2 text-sm text-muted-foreground">React/Next.js, shadcn/ui, Tailwind, TypeScript. Server Components and clean data loading.</p>
+            <div className="mt-1 font-medium">Front-end delivery</div>
+            <p className="mt-2 text-sm text-muted-foreground">Data-heavy dashboards, reconciliation tooling, and automation flows using React, Next.js, React Query, and TanStack Table.</p>
           </div>
           <div className="rounded-2xl border bg-background/40 p-5 ring-1 ring-inset ring-[var(--border)]">
             <div className="text-sm text-muted-foreground">Tooling</div>
             <div className="mt-1 font-medium">Modern & pragmatic</div>
-            <p className="mt-2 text-sm text-muted-foreground">Supabase, Vercel, ESLint/Prettier, GitHub Actions, Framer Motion, Plausible.</p>
+            <p className="mt-2 text-sm text-muted-foreground">Supabase, Express, Swagger/OpenAPI, GitHub Actions, ESLint/Prettier, Cypress (exposure), Docker (exposure), Figma.</p>
           </div>
           <div className="rounded-2xl border bg-background/40 p-5 ring-1 ring-inset ring-[var(--border)]">
             <div className="text-sm text-muted-foreground">Education</div>
             <div className="mt-1 font-medium flex items-center gap-2"><GraduationCap className="h-4 w-4 text-primary" /> University of Arkansas</div>
-            <p className="mt-2 text-sm text-muted-foreground">B.S. in Computer Science — hands-on with web apps, UI/UX, and applied AI workflows.</p>
+            <p className="mt-2 text-sm text-muted-foreground">B.S. Computer Science (3.77 GPA) with Mathematics & Entrepreneurship minors — May 2025.</p>
           </div>
         </div>
 

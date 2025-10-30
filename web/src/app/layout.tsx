@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     default: "Michael F. Jones — Developer",
     template: "%s | Michael F. Jones",
   },
-  description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
+  description: "Front-end web developer in Fayetteville, AR.",
   icons: {
     icon: [{ url: "/mfj-logo-color.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     title: "Michael F. Jones — Developer",
-    description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
+    description: "Front-end web developer in Fayetteville, AR.",
     url: "/",
     siteName: "Michael F. Jones",
     locale: "en_US",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Michael F. Jones — Developer",
-    description: "Frontend‑leaning full‑stack developer in Fayetteville, AR.",
+    description: "Front-end web developer in Fayetteville, AR.",
     images: ["/images/landing.jpg"],
   },
 };
