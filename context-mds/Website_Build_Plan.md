@@ -17,7 +17,7 @@
 
 - Ship a production‑quality personal site with **Home, About, Projects, Contact, Blog (optional)**.
 - Showcase **2–3 strong projects** with live demos and clean repos.
-- Present a clear professional brand; streamline applications with a downloadable **resume.pdf**.
+- Present a clear professional brand; streamline applications with a downloadable **Jones-Front-End-Web-Developer.pdf**.
 - Make the site fast, accessible, and maintainable; simple content workflows.
 
 **Secondary Objectives**
@@ -81,7 +81,7 @@
 / (root)
 ├─ .github/workflows/ci.yml
 ├─ public/
-│  ├─ resume.pdf
+│  ├─ Jones-Front-End-Web-Developer.pdf
 │  ├─ og/ (Open Graph images)
 │  └─ images/ (project thumbs, avatar)
 ├─ src/
@@ -205,7 +205,7 @@ npm i @supabase/supabase-js
 
 ### M6 — Resume Delivery
 
-- [ ] Place `public/resume.pdf` (ATS and print versions optional)
+- [ ] Place `public/Jones-Front-End-Web-Developer.pdf` (ATS and print versions optional)
 - [ ] Add `/resume` route or direct download button
 **DoD:** Button downloads or opens resume reliably; file size < 1MB if possible.
 
@@ -376,7 +376,7 @@ npm i @supabase/supabase-js
    - Build accessible form with validation; stub API or mailto fallback.
 
 7. **Resume Delivery**
-   - Place `public/resume.pdf`; wire “Download Resume” button site‑wide.
+  - Place `public/Jones-Front-End-Web-Developer.pdf`; wire “Download Resume” button site‑wide.
 
 8. **Perf & A11y**
    - Replace images with `next/image`; add Playwright a11y smoke test.

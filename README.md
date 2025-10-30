@@ -72,7 +72,7 @@ The site is designed to serve as both a **personal brand** and a **proof of comp
 / (root)
 ├─ .github/workflows/ci.yml
 ├─ public/
-│  ├─ resume.pdf
+│  ├─ Jones-Front-End-Web-Developer.pdf
 │  ├─ images/
 │  └─ og/
 ├─ src/
