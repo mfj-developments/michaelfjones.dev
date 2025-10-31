@@ -1,8 +1,9 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- All buildable code lives in `web/`. Routes sit in `web/src/app`, reusable UI and theme helpers in `web/src/components`, and project metadata in `web/src/data/projects.ts`.
+- All buildable code lives in `web/`. Routes sit in `web/src/app`, reusable UI and theme helpers in `web/src/components`, and project metadata can be managed through Sanity CMS or `web/src/data/projects.ts`.
 - Utilities, shared types, and static assets live in `web/src/lib`, `web/src/types`, and `web/public`. Treat `context-mds/` as the canonical history; append context rather than replacing it.
+- Sanity CMS schemas live in `web/sanity/schemas/` and Studio is accessible at `/studio` route.
 
 ## Build, Test, and Development Commands
 - From `web/`, run `npm install`, `npm run dev`, `npm run build`, and `npm start` (Node 20+ required).
@@ -10,7 +11,8 @@
 - Configure `.env.local` with required environment variables:
   - **For contact form**: `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
   - **For Google OAuth**: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-  - See `context-mds/GOOGLE_OAUTH_SETUP.md` for detailed OAuth configuration steps.
+  - **For Sanity CMS**: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `NEXT_PUBLIC_SANITY_API_VERSION`
+  - See `context-mds/GOOGLE_OAUTH_SETUP.md` for OAuth setup and `context-mds/SANITY_CMS_SETUP.md` for CMS configuration.
 
 ## Coding Style & Naming Conventions
 - Use TypeScript React function components with explicit props, 2-space indentation, PascalCase components, and camelCase helpers.
@@ -33,4 +35,5 @@
 - `ThemeProvider` and `theme-controls` own palette state; reuse them instead of new global stores. Project detail pages rely on `generateStaticParams`, so update `web/src/data/projects.ts` and `web/public/images` together.
 - `AuthProvider` (from `contexts/auth-context.tsx`) manages Google OAuth state globally; use the `useAuth()` and `useUser()` hooks to access user data in any component.
 - Supabase client utilities (`lib/supabase/client.ts` for browser, `lib/supabase/server.ts` for API routes) handle session management via secure cookies.
+- **Sanity CMS** provides content management at `/studio`. Query functions in `lib/sanity/queries.ts` fetch content. Use `getAllProjects()`, `getAbout()`, `getAllBlogPosts()`, and `getSettings()` for data fetching. Image optimization via `urlFor()` from `lib/sanity/client.ts`.
 - Secrets belong in `.env.local` and Vercel project settings (root directory stays `web`). Sanitize any new API inputs following the `web/src/app/api/contact/route.ts` pattern and avoid committing sensitive files outside `web/public`.
