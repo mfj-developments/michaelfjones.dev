@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function Footer() {
   return (
     <footer className="border-t py-8 text-sm bg-background/40 backdrop-blur supports-[backdrop-filter]:bg-background/30">

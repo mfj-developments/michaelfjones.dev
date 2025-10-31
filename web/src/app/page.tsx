@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ExternalLink, ArrowRight, Mail, Github, Linkedin, MapPin, Code2, Sparkles, GraduationCap, Activity } from "lucide-react";
+import { ExternalLink, Mail, Github, Linkedin, MapPin, Code2, Sparkles, GraduationCap, Activity } from "lucide-react";
 import { projects } from "@/data/projects";
 import ProjectsClient from "@/app/projects/projects-client";
 import ResumePreview from "@/components/resume-preview";

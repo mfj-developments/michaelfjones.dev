@@ -6,7 +6,11 @@
 
 ## Build, Test, and Development Commands
 - From `web/`, run `npm install`, `npm run dev`, `npm run build`, and `npm start` (Node 20+ required).
-- `npm run lint` and `npm run typecheck` mirror CI; run both before every PR. Configure `.env.local` with `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL` whenever you modify `/api/contact`.
+- `npm run lint` and `npm run typecheck` mirror CI; run both before every PR.
+- Configure `.env.local` with required environment variables:
+  - **For contact form**: `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`
+  - **For Google OAuth**: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - See `context-mds/GOOGLE_OAUTH_SETUP.md` for detailed OAuth configuration steps.
 
 ## Coding Style & Naming Conventions
 - Use TypeScript React function components with explicit props, 2-space indentation, PascalCase components, and camelCase helpers.
@@ -27,4 +31,6 @@
 
 ## Architecture & Configuration Notes
 - `ThemeProvider` and `theme-controls` own palette state; reuse them instead of new global stores. Project detail pages rely on `generateStaticParams`, so update `web/src/data/projects.ts` and `web/public/images` together.
+- `AuthProvider` (from `contexts/auth-context.tsx`) manages Google OAuth state globally; use the `useAuth()` and `useUser()` hooks to access user data in any component.
+- Supabase client utilities (`lib/supabase/client.ts` for browser, `lib/supabase/server.ts` for API routes) handle session management via secure cookies.
 - Secrets belong in `.env.local` and Vercel project settings (root directory stays `web`). Sanitize any new API inputs following the `web/src/app/api/contact/route.ts` pattern and avoid committing sensitive files outside `web/public`.

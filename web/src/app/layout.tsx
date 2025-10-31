@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/contexts/auth-context";
 import { Analytics } from "@vercel/analytics/next";
 import { projects } from "@/data/projects";
 
@@ -59,29 +60,31 @@ export default function RootLayout({
       </head>
       <body className={`antialiased min-h-dvh flex flex-col bg-background text-foreground relative`}>
         <ThemeProvider>
-          {/* Background layers: gradient + subtle noise */}
-          <div
-            aria-hidden
-            className="pointer-events-none fixed inset-0 -z-10"
-            style={{ background: "linear-gradient(to bottom, var(--gradient-top), var(--gradient-bottom))" }}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none fixed inset-0 -z-10"
-            style={{
-              background:
-                "radial-gradient(1000px 600px at 10% -10%, var(--gradient-radial-1) 0%, transparent 60%), radial-gradient(800px 400px at 90% -10%, var(--gradient-radial-2) 0%, transparent 55%)",
-            }}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none fixed inset-0 -z-10 opacity-[0.06] mix-blend-overlay bg-[url('/noise.svg')]"
-          />
+          <AuthProvider>
+            {/* Background layers: gradient + subtle noise */}
+            <div
+              aria-hidden
+              className="pointer-events-none fixed inset-0 -z-10"
+              style={{ background: "linear-gradient(to bottom, var(--gradient-top), var(--gradient-bottom))" }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none fixed inset-0 -z-10"
+              style={{
+                background:
+                  "radial-gradient(1000px 600px at 10% -10%, var(--gradient-radial-1) 0%, transparent 60%), radial-gradient(800px 400px at 90% -10%, var(--gradient-radial-2) 0%, transparent 55%)",
+              }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none fixed inset-0 -z-10 opacity-[0.06] mix-blend-overlay bg-[url('/noise.svg')]"
+            />
 
-          <Nav hasProjects={projects.length > 0} />
-          <main className="flex-1 container mx-auto px-4 py-10 sm:py-12">{children}</main>
-          <Footer />
-          {isProduction && <Analytics />}
+            <Nav hasProjects={projects.length > 0} />
+            <main className="flex-1 container mx-auto px-4 py-10 sm:py-12">{children}</main>
+            <Footer />
+            {isProduction && <Analytics />}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

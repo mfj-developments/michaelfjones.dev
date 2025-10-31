@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Github, Linkedin, LogOut, Mail, User } from "lucide-react";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,15 @@ import { useState } from "react";
 import ThemeControls from "@/components/theme-controls";
 import LogoMark from "@/components/logo-mark";
 import { Tooltip } from "@/components/tooltip";
+import { useAuth } from "@/contexts/auth-context";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 type NavProps = {
   hasProjects?: boolean;
@@ -16,6 +26,8 @@ type NavProps = {
 
 export default function Nav({ hasProjects = true }: NavProps) {
   const [open, setOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const { user, loading, signInWithGoogle, signOut } = useAuth();
 
   const linkDefinitions = [
     { href: "/#about", label: "About", requiresProjects: false },
@@ -24,6 +36,11 @@ export default function Nav({ hasProjects = true }: NavProps) {
   ] as const;
 
   const activeLinks = linkDefinitions.filter((link) => (link.requiresProjects ? hasProjects : true));
+
+  const handleSignOut = async () => {
+    await signOut();
+    setUserMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/60 supports-[backdrop-filter]:bg-background/45 backdrop-blur-md">
@@ -64,6 +81,51 @@ export default function Nav({ hasProjects = true }: NavProps) {
             </Link>
           </Tooltip>
           <ThemeControls />
+
+          <div className="h-5 w-px bg-border" />
+
+          {!loading && (
+            <>
+              {user ? (
+                <Dialog open={userMenuOpen} onOpenChange={setUserMenuOpen}>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" size="sm" className="gap-2">
+                      {user.user_metadata?.avatar_url ? (
+                        <Image
+                          src={user.user_metadata.avatar_url}
+                          alt={user.user_metadata?.full_name || "User"}
+                          width={20}
+                          height={20}
+                          className="h-5 w-5 rounded-full"
+                        />
+                      ) : (
+                        <User className="h-4 w-4" />
+                      )}
+                      <span className="text-sm">{user.user_metadata?.full_name || "Account"}</span>
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Account</DialogTitle>
+                      <DialogDescription>
+                        Signed in as {user.email}
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex flex-col gap-4 pt-4">
+                      <Button onClick={handleSignOut} variant="outline" className="w-full gap-2">
+                        <LogOut className="h-4 w-4" />
+                        Sign Out
+                      </Button>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              ) : (
+                <Button onClick={signInWithGoogle} size="sm" variant="default">
+                  Sign In
+                </Button>
+              )}
+            </>
+          )}
         </div>
 
         <div className="md:hidden">
@@ -92,6 +154,44 @@ export default function Nav({ hasProjects = true }: NavProps) {
                 </nav>
 
                 <div className="flex flex-col gap-6">
+                  {!loading && (
+                    <div className="rounded-2xl border p-4">
+                      {user ? (
+                        <div className="flex flex-col gap-4">
+                          <div className="flex items-center gap-3">
+                            {user.user_metadata?.avatar_url ? (
+                              <Image
+                                src={user.user_metadata.avatar_url}
+                                alt={user.user_metadata?.full_name || "User"}
+                                width={40}
+                                height={40}
+                                className="h-10 w-10 rounded-full"
+                              />
+                            ) : (
+                              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent">
+                                <User className="h-5 w-5" />
+                              </div>
+                            )}
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-medium truncate">
+                                {user.user_metadata?.full_name || "Account"}
+                              </p>
+                              <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                            </div>
+                          </div>
+                          <Button onClick={handleSignOut} variant="outline" size="sm" className="w-full gap-2">
+                            <LogOut className="h-4 w-4" />
+                            Sign Out
+                          </Button>
+                        </div>
+                      ) : (
+                        <Button onClick={signInWithGoogle} className="w-full">
+                          Sign In with Google
+                        </Button>
+                      )}
+                    </div>
+                  )}
+
                   <div className="flex justify-between gap-3">
                     <Link aria-label="GitHub" href="https://github.com/mfj-developments" target="_blank" rel="noreferrer" className="flex h-12 flex-1 items-center justify-center rounded-xl border text-foreground/80 transition-colors hover:text-foreground">
                       <Github className="h-5 w-5" />
